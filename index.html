@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#9CC2CE" />
+    <title>Photo gallery</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./css/main.min.css" />
+  </head>
+  <body>
+    <!-- В этот список добавляй элементы галереи -->
+    <ul class="gallery js-gallery"></ul>
+
+    <!--
+      Модальное окно для полноразмерного изображения
+      Для того чтобы открыть, необходимо добавить на div.lightbox CSS-класс is-open
+    -->
+    <div class="lightbox js-lightbox">
+      <div class="lightbox__overlay"></div>
+
+      <!-- контейнер с картинками -->
+
+      <div class="lightbox__content">
+        <img class="lightbox__image" src="" alt="" />
+      </div>
+
+      <!-- левая кнопка  -->
+      <button class="left arrow">
+        <svg class="arrow-svg">
+          <use class="previus" href="./img/svg/sprite.svg#left-arrow"></use>
+        </svg>
+      </button>
+      <!-- правая кнопка -->
+      <button class="right arrow">
+        <svg class="arrow-svg">
+          <use class="next" href="./img/svg/sprite.svg#right-arrow"></use>
+        </svg>
+      </button>
+      <!-- кнопка закрытия -->
+      <button
+        type="button"
+        class="lightbox__button"
+        data-action="close-lightbox"
+      >
+        <svg class="close-btn" width="25" height="25">
+          <use href="./img/svg/sprite.svg#close-btn"></use>
+        </svg>
+      </button>
+    </div>
+    <script src="./gallery.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
