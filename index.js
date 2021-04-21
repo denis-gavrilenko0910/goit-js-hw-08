@@ -25,7 +25,8 @@ const rightArrowBtnRef = document.querySelector(".right");
 
 let currentIdx = 0;
 // итерация по массиву и создание всех элементов для их отрисовки (рендера)
-const liRefGalery = gallery.map(({ preview, original, description }) => {
+const liRefGalery = gallery.map(({ preview, original, description }, index) => {
+  currentIdx = index;
   // создание элементов <li>, <a>, <img>
   const liRef = document.createElement("li");
   const anchorRef = document.createElement("a");
@@ -43,7 +44,8 @@ const liRefGalery = gallery.map(({ preview, original, description }) => {
   imgRef.setAttribute("alt", description);
 
   imgRef.dataset.source = original;
-  imgRef.dataset.index = original;
+  // imgRef.dataset.index = original;
+  imgRef.dataset.index = index;
 
   anchorRef.append(imgRef);
   liRef.append(anchorRef);
@@ -79,7 +81,8 @@ const toggleFullScreen = () => {
 /* открытие модального окна по клику на картинку */
 
 const onOpenModalClick = (e) => {
-  e.preventDefault();
+  e.preventDefault(e);
+  currentIdx = Number(e.target.getAttribute("data-index"));
   if (e.target.nodeName !== "IMG") return;
   toggleFullScreen();
 
@@ -103,6 +106,7 @@ const onOpenModalClick = (e) => {
 
   //   console.dir("открытие модалки с картинкой", e.target);
 };
+
 ulCaruselRef.addEventListener("click", onOpenModalClick);
 // ulCaruselRef.removeEventListener("click", onOpenModalClick);
 
@@ -112,11 +116,8 @@ ulCaruselRef.addEventListener("click", onOpenModalClick);
 
 const onCloseBtnClick = (e) => {
   // удаление класса is-open
-  removeClassList();
 
   // очищает src и alt
-  lightboxImgRef.src = "";
-  lightboxImgRef.alt = "";
 
   overlayRef.removeEventListener("click", onBackDropClick);
 
@@ -129,6 +130,10 @@ const onCloseBtnClick = (e) => {
 
   leftArrowBtnRef.removeEventListener("click", onLeftArrowMouseClik);
   rightArrowBtnRef.removeEventListener("click", onRightArrowMouseClik);
+
+  lightboxImgRef.src = "";
+  lightboxImgRef.alt = "";
+  removeClassList(e);
 
   //   console.dir("кнопка закрытия модалки", e.target); //для проверки на наличие слушателя событий
 };
