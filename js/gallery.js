@@ -1,4 +1,4 @@
-export default [
+const gallery = [
   {
     preview:
       "https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg",
@@ -64,23 +64,6 @@ export default [
   },
 ];
 
-import gallery from "./gallery.js";
-
-/*Разбей задание на несколько подзадач:
-
-1 .Создание и рендер разметки по массиву данных и предоставленному шаблону.
-
-2. Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
-
-3. Открытие модального окна по клику на элементе галереи.
-
-4. Подмена значения атрибута src элемента img.lightbox__image.
-
-5. Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
-
-6. Очистка значения атрибута src элемента img.lightbox__image. Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее. */
-
-// const divCaruselRef = document.getElementById("carusel");
 const ulCaruselRef = document.querySelector(".js-gallery");
 const divLightBoxRef = document.querySelector(".js-lightbox");
 const overlayRef = document.querySelector(".lightbox__overlay");
@@ -201,7 +184,7 @@ const onCloseBtnClick = (e) => {
   lightboxImgRef.alt = "";
   removeClassList(e);
 
-  //   console.dir("кнопка закрытия модалки", e.target); //для проверки на наличие слушателя событий
+  //console.dir("кнопка закрытия модалки", e.target); //для проверки на наличие слушателя событий
 };
 
 const onBackDropClick = (e) => {
@@ -209,7 +192,7 @@ const onBackDropClick = (e) => {
     // функция обратного вызова для снятия класса is-open и закрытия модалки
     onCloseBtnClick(e);
   }
-  //   console.dir("клик на backdrop", e); //для проверки на наличие слушателя событий
+  //console.dir("клик на backdrop", e); //для проверки на наличие слушателя событий
   return;
 };
 
@@ -218,11 +201,11 @@ const onBackDropClick = (e) => {
 /* закрытие модального окна по клику на клавишу ESC */
 const onEscPressBtnRef = (e) => {
   if (e.code === "Escape") {
-    // функция обратного вызова для снятия класса is-open, закрытия модалки
+    //функция обратного вызова для снятия класса is-open, закрытия модалки
     //и удаление всех слушателей событий
     onCloseBtnClick(e);
   }
-  //   console.dir("нажимаю escape", e); //для проверки на наличие слушателя событий
+  //console.dir("нажимаю escape", e); //для проверки на наличие слушателя событий
   return;
 };
 
@@ -234,7 +217,7 @@ const onRightArrow = (e) => {
     }
     lightboxImgRef.src = gallery[currentIdx].original;
 
-    // console.dir("нажимаю стрелку вправо", e);
+    //console.dir("нажимаю стрелку вправо", e);
   }
   return;
 };
@@ -246,7 +229,7 @@ const onLeftArrow = (e) => {
       currentIdx = gallery.length - 1;
     }
     lightboxImgRef.src = gallery[currentIdx].original;
-    // console.dir("нажимаю стрелку влево", e); //для проверки на наличие слушателя событий
+    //console.dir("нажимаю стрелку влево", e); //для проверки на наличие слушателя событий
   }
   return;
 };
@@ -257,8 +240,6 @@ const onRightArrowMouseClik = () => {
     currentIdx = 0;
   }
   lightboxImgRef.src = gallery[currentIdx].original;
-  //   console.dir(e.currentTarget);
-  //   console.dir(e.target);
 };
 const onLeftArrowMouseClik = () => {
   currentIdx -= 1;
@@ -266,7 +247,4 @@ const onLeftArrowMouseClik = () => {
     currentIdx = gallery.length - 1;
   }
   lightboxImgRef.src = gallery[currentIdx].original;
-
-  //   console.dir(e.currentTarget);
-  //   console.dir(e.target);
 };
