@@ -27,17 +27,15 @@ body {
           justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   background-color: #f0ffff;
   color: #212121;
 }
 
 .gallery {
-  display: -ms-grid;
   display: grid;
   width: 1200px;
-  -ms-grid-columns: (minmax(380px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   grid-auto-rows: 240px;
   grid-gap: 12px;
   padding: 0;
@@ -169,7 +167,7 @@ body {
   transition: background-color var(--animation-duration) var(--timing-function);
   -webkit-transition: fill var(--animation-duration) var(--timing-function);
   transition: fill var(--animation-duration) var(--timing-function);
-  background-color: #0000001f;
+  background-color: rgba(0, 0, 0, 0.1215686275);
   fill: #777;
 }
 
@@ -214,5 +212,4 @@ body {
 
 .right {
   right: 3%;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
